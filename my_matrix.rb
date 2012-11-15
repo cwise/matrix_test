@@ -8,6 +8,19 @@ class MyMatrix
 	WEST = 1
 	STILL = 0
 
+	def self.run
+		unless ARGV.count==1
+			puts "This application takes a single argument (a seed) only"
+		else
+			m = MyMatrix.new(ARGV[0].to_i)
+			if m.perfect_square? 
+				m.print_matrix
+			else
+				puts "This seed does not product a perfect square"   
+			end
+		end
+	end
+
 	def initialize seed
 		@seed = seed
 		build_spiral_matrix if perfect_square?
@@ -85,3 +98,5 @@ class MyMatrix
 		end
 	end
 end
+
+MyMatrix.run
